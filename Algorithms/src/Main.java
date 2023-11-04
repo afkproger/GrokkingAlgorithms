@@ -3,9 +3,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        SelectionSort selectionSort = new SelectionSort();
-        System.out.println(selectionSort.sort(new ArrayList<>(List.of(2, 3, 5, 1, 6, 8, 9, 10))));
+        System.out.println(Recursion.factorial(5));
     }
+
+
+
 
 
 }
@@ -51,5 +53,40 @@ class SelectionSort {
             newArr.add( array.remove(smallest));
         }
         return newArr;
+    }
+}
+
+class Recursion {
+    /*Любая рекурсия должна содержать две части
+    1) базовый случай (функция себя не вызывает, чтобы предотвратить зацикливание)
+    2) рекурсивный случай
+    */
+    public static void greet(String name){
+        System.out.println("Hello " + name + " !");
+        greet2(name);
+        System.out.println("getting ready to say bye...");
+        bye();
+    }
+
+    public static void greet2 (String name){
+        System.out.println("how are you, " + name + " ?");
+    }
+    public static void bye(){
+        System.out.println("bye");
+    }
+    public void countdown(int number){
+        if (number == 0){
+            return;
+            //базовый случай
+        }
+        System.out.println(number);
+        countdown(number - 1); // рекурсивный случай
+    }
+
+    public static int factorial(int number){
+        if (number == 1) {
+            return 1;
+        }
+        return number * factorial(number - 1);
     }
 }
