@@ -1,15 +1,23 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println(Recursion.factorial(5));
+        List<Integer> list = new ArrayList<>(List.of(1,4,5,6,8,3,13,5,67,89,70,1,562,1,3));
+        list.sort(Comparator.comparingInt(e -> e));
     }
 
 
 
 
+}
 
+class QuickSort {
+    public static List<Integer> sort(List<Integer> listForSort){
+        
+    }
 }
 class BinarySearch {
     public int search (List<Integer> list, int item){
