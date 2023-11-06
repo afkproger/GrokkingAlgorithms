@@ -9,7 +9,9 @@ public class Main {
         list.sort(Comparator.comparingInt(e -> e));
     }
 
+    public static void theTaskOfTheFarmer (int weight , int height) {
 
+    }
 
 
 }
