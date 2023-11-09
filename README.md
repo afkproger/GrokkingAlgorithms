@@ -36,3 +36,53 @@
 2 . Задача делится или сокращается до тех пор , пока не будет сведена к базовому случаю  
 
 В функции ** theTaskOfTheFarmer **
+
+##       QuickSort  
+
+Быстрая сортировка основана на стратегии ** разделяй и властвуй **.  
+Базовый случай для массивов - если массив пустой или с 1 элементом => он уже отсортирован.  
+Как она работает?
+1. Выбираем опорный элемент
+2. Создаем подмассивы с элементами которые больше опорного,с элементами которые меньше опорного
+3. Повторяем шаги (1,2) для этих подмассивов , пока не дойдём до базового случая.А так строим SubList. 
+Т.е qiucksort(smallestNums) + pivot + qiucksort(biggestNums)  
+
+---
+```java
+public class QuickSort {
+    public List<Integer> quicksort(List<Integer> list) {
+        if (list.size() < 2) {
+            return list;
+            // Базовый случай
+        } else {
+            int pivot = list.get(0); // это наша опорная точка
+            List<Integer> smallestPivot = new ArrayList<>();  // подмассив для элементов меньше опорной точки
+            List<Integer> biggestPivot = new ArrayList<>();   // подмассив для элементов больше опорной точки
+
+            //цикл для отбора подмассивов, нужно не забыть что мы идём от 1 элемента, т.к.опорная точка - нулевой эллемент
+            for (int i = 1; i < list.size(); i++) {
+                if (list.get(i) <= pivot) {
+                    smallestPivot.add(list.get(i));
+                } else {
+                    biggestPivot.add(list.get(i));
+                }
+            }
+            /**
+             * Почему не получалось до этого?
+             * Я забывал присвоить smallest and biggest новые значения, т.е. отсортированные массивы
+             * Как это выглядело:quicksort(smallestPivot);  quicksort(biggestPivot);
+             * Короче, как обычно, накринжевал и сидел довольным
+             */
+
+            smallestPivot = quicksort(smallestPivot);
+            biggestPivot = quicksort(biggestPivot);
+
+            List<Integer> sortingList = new ArrayList<>(smallestPivot);
+            sortingList.add(pivot);
+            sortingList.addAll(biggestPivot);
+
+            return sortingList;
+        }
+    }
+}
+```
