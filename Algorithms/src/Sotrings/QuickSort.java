@@ -26,33 +26,34 @@ import java.util.stream.Stream;
 
 
 public class QuickSort {
-    public List<Integer> quicksort (List<Integer> list){
-        if (list.size() < 2){
+    public List<Integer> quicksort(List<Integer> list) {
+        if (list.size() < 2) {
             return list;
-        }else {
-            int indexForPivot = list.size()/2;
-            int pivot = list.get(indexForPivot);
-            List<Integer> smallestPivot = new ArrayList<>();
-            List<Integer> biggestPivot = new ArrayList<>();
+        } else {
+            int middleIndex = list.size() / 2;
+            int middleElement = list.get(middleIndex);
+            List<Integer> smallest = new ArrayList<>();
+            List<Integer> biggest = new ArrayList<>();
 
             for (int i = 0; i < list.size(); i++) {
-                if(i == indexForPivot){
+                if (i == middleIndex) {
                     continue;
                 }
-                if(list.get(i) <= pivot){
-                    smallestPivot.add(list.get(i));
-                }else {
-                    biggestPivot.add(list.get(i));
+                if (list.get(i) >= middleElement) {
+                    biggest.add(list.get(i));
+                } else {
+                    smallest.add(list.get(i));
                 }
             }
 
-            smallestPivot = quicksort(smallestPivot);
-            biggestPivot = quicksort(biggestPivot);
+            smallest = quicksort(smallest);
+            biggest = quicksort(biggest);
 
-            List<Integer> subList = new ArrayList<>(smallestPivot);
-            subList.add(pivot);
-            subList.addAll(biggestPivot);
-            return subList;
+
+            List<Integer> sorted = new ArrayList<>(smallest);
+            sorted.add(middleElement);
+            sorted.addAll(biggest);
+            return sorted;
         }
     }
 }
