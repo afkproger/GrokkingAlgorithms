@@ -1,7 +1,6 @@
 package HashTable;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Хэш - Функции
@@ -27,6 +26,11 @@ import java.util.Map;
  * Как проверить то, голосовал ли избиратель или нет?
  * Создадим хэш - мап и будем проверять по ключу (имя ключ) голосовал ли человек или нет?
  * Если да, то гоним наглеца, иначе добавляем его в список проголосовавших.
+ *
+ *
+ * Коллизия
+ * Что это такое. Это ситуация при которой двум одинаковым ключам сопоставляются два разных значения
+ *
  */
 
 public class HashTableLearning {
@@ -71,4 +75,11 @@ public class HashTableLearning {
         }
         voted.putIfAbsent(name, true);
     }
+
+
 }
+
+
+
+
+
