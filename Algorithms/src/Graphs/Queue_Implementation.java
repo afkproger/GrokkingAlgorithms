@@ -34,6 +34,12 @@ public class Queue_Implementation<T> implements Queue <T>{
     }
 
     @Override
+    public void add(List<T> list) {
+        System.out.println(list);
+        arrayForQueueRealization.addAll(list);
+    }
+
+    @Override
     public T remove() {
         return arrayForQueueRealization.remove(0); // удаляем первый элемент
     }
@@ -52,6 +58,9 @@ public class Queue_Implementation<T> implements Queue <T>{
 // Простой интерфейс с методами, которые нужны для реализации очереди
 interface Queue<T> {
     void add (T item);
+
+    void add (List<T> list);
+
     T remove();
 
     boolean isEmpty();
